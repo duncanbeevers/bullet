@@ -113,8 +113,8 @@ class AppDouble
 end
 
 class ResponseDouble
-  def initialize body = nil
-    self.body = body
+  def initialize actual_body = nil
+    @actual_body = actual_body
   end
 
   def body

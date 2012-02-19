@@ -18,6 +18,13 @@ describe Bullet::Rack do
         Bullet.should_receive(:end_request)
         middleware.call([])
       end
+
+      it "should return original response body" do
+        expected_response = ResponseDouble.new "Actual body"
+        app.response = expected_response
+        status, headers, response = middleware.call([])
+        response.should eq expected_response
+      end
     end
 
     context "when Bullet is disabled" do
